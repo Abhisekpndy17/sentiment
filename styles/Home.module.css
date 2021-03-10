@@ -1,19 +1,35 @@
 .container {
+  width: 100%;
+  margin: 0px auto;
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .main {
+  width: 95%;
+  margin: 0px auto;
   padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav{
+  width: 100%;
+  margin: 0px auto;
+  background: #000;
+  color: #ddd;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2rem;
 }
 
 .footer {
@@ -28,6 +44,7 @@
 .footer img {
   margin-left: 0.5rem;
 }
+
 
 .footer a {
   display: flex;
@@ -81,13 +98,14 @@
 }
 
 .card {
-  margin: 1rem;
-  flex-basis: 45%;
+  width: 90%;
+  margin: 1rem auto;
+  flex-basis: 100%;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 2px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
@@ -106,12 +124,16 @@
 
 .card p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.5;
 }
 
 .logo {
   height: 1em;
+}
+
+.textmuted{
+  text-transform: capitalize;
 }
 
 @media (max-width: 600px) {

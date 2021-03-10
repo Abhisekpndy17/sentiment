@@ -1,65 +1,65 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import Sentiment from "sentiment";
+import { useState } from "react";
+
+const sentiment = new Sentiment();
 
 export default function Home() {
+  const [score, setScore] = useState("");
+  const [genralSentiment, setGenralSentiment] = useState("");
+  const [token, setToken] = useState("");
+  const [positiveWords, setPositiveWords] = useState([]);
+  const [negativeWords, setNegativeWords] = useState([]);
+
+  const changeHappen = (e) => {
+    const result = sentiment.analyze(e.target.value);
+
+    setScore(result.score);
+    if (result.score < 0) {
+      setGenralSentiment("Negative");
+    } else if (result.score > 0) {
+      setGenralSentiment("Positive");
+    } else {
+      setGenralSentiment("Neutral");
+    }
+    setToken(result.tokens.length);
+    setPositiveWords(result.positive);
+    setNegativeWords(result.negative);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+      <h1>Hello nextjs</h1>
+ 
+      <textarea name="text" cols="30" rows="10" onChange={changeHappen} />
+      <div className={styles.grid}>
+        <div className={styles.card}>
+          <p> Sentiment Score : {score}</p>
+          <p>The Length of token : {token}</p>
+          <p>Genral Sentiment : {genralSentiment}</p>
+          
+          </div>
+          <div className={styles.card}>
+          <h3>Positive words</h3>
+          {positiveWords.map((positive, index) => (
+            <p className={styles.textmuted} key={index}>
+              {positive} 
             </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+          ))}
+          </div>
+          <div className={styles.card}>
+          <h3>Negative Words</h3>
+          {negativeWords.map((negative, index) => (
+            <p className={styles.textmuted} key={index}>{negative}</p>
+            
+          ))}
+          </div>
+          </div>
     </div>
-  )
+  );
 }
