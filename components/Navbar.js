@@ -1,12 +1,13 @@
-import style from '../styles/Home.module.css'
-
+import style from "../styles/Home.module.css";
+import Link from "next/link";
 
 const Navbar = () => {
-    return (
-        <nav className={style.nav}>
-            <h1>Sentiment Analysis</h1>
-        </nav>
-    )
-}
+  return (
+    <nav className={style.nav}>
+      <Link href="/">Sentiment</Link>
+      <Link href="/howitwork">How it Work</Link>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
