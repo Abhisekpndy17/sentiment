@@ -9,7 +9,13 @@
   justify-content: flex-start;
   align-items: center;
 }
-
+.hero{
+  height: 60vh;
+  width: 100%;
+  margin: 0px auto;
+  background: url(../public/img1.jpg) no-repeat center ;
+  background-size: cover;
+}
 .main {
   width: 95%;
   margin: 0px auto;
@@ -155,5 +161,8 @@
   }
   .container{
     width: 100%;
+  }
+  .hero{
+    height: 60vw;
   }
 }
