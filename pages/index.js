@@ -12,7 +12,7 @@ export default function Home() {
   const [token, setToken] = useState("");
   const [positiveWords, setPositiveWords] = useState([]);
   const [negativeWords, setNegativeWords] = useState([]);
-  const [color, setColor] = useState("")
+  const [color, setColor] = useState("");
 
   const changeHappen = (e) => {
     const result = sentiment.analyze(e.target.value);
@@ -20,62 +20,74 @@ export default function Home() {
     setScore(result.score);
     if (result.score < 0) {
       setGenralSentiment("Negative");
-      setColor("red")
+      setColor("red");
     } else if (result.score > 0) {
       setGenralSentiment("Positive");
-      setColor("green")
+      setColor("green");
     } else {
       setGenralSentiment("Neutral");
-      setColor("yellow")
+      setColor("yellow");
     }
     setToken(result.tokens.length);
     setPositiveWords(result.positive);
     setNegativeWords(result.negative);
   };
   const style = {
-    borderRadius:5,
+    borderRadius: 5,
     padding: 5,
-    backgroundColor: color
+    backgroundColor: color,
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Sentiment Analysis</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      <Info />
-      <textarea name="input the text" cols="30" rows="10" placeholder='Enter the text or paste the copy text to sentiment analysis' onChange={changeHappen} />
-      <div className={styles.grid}>
+      <div className={styles.container}>
+      <h2 className={styles.title}>
+        Sentiment <span>Analyzer</span>
+      </h2>
+      </div>
+      <div className={styles.container}>
+        <textarea
+          name="input the text"
+          cols="30"
+          rows="10"
+          placeholder="Enter the text or paste the copy text to sentiment analysis"
+          onChange={changeHappen}
+        />
+      </div>
+      <div className={styles.main}>
         <div className={styles.card}>
           <p> Sentiment Score : {score}</p>
-          <hr/>
+          <hr />
           <p>The Length of token : {token}</p>
-          <hr/>
-          <p style={{marginTop:15}}>Genral Sentiment : <span style={style}>{genralSentiment}</span></p>
-          
-          </div>
-          
-          <div className={styles.card}>
+          <hr />
+          <p style={{ marginTop: 15 }}>
+            Genral Sentiment : <span style={style}>{genralSentiment}</span>
+          </p>
+        </div>
+        <div className={styles.card}>
           <h3>Positive words</h3>
-          <div className={styles.flex}>
           {positiveWords.map((positive, index) => (
             <p className={styles.textmuted} key={index}>
-              {positive} 
+              {positive}
             </p>
           ))}
-          </div>
-          </div>
-          <div className={styles.card}>
+        </div>
+
+        <div className={styles.card}>
           <h3>Negative Words</h3>
           <div className={styles.flex}>
           {negativeWords.map((negative, index) => (
-            <p className={styles.textmuted} key={index}>{negative}</p>
+            <p className={styles.textmuted} key={index}>
+              {negative}
+            </p>
           ))}
           </div>
-          </div>
-          </div>
+        </div>
+      </div>
     </div>
   );
 }

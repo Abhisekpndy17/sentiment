@@ -1,56 +1,29 @@
-import style from "../styles/Home.module.css";
-import Image from 'next/image'
-
+import Info from "../components/Info";
+import style from "../styles/How.module.css";
 
 const howitwork = () => {
   return (
     <div className={style.container}>
-      <div className={style.hero}></div>
-      <div className={style.main}>
-        <div className={style.title}>
-          What is <span>Sentiment Analysis</span> ?
-        </div>
-        <div className={style.description}>
-          <p>
-            Sentiment Analysis is the process of determining whether a piece of
-            writing is positive, negative or neutral. A sentiment analysis
-            system for text analysis combines natural language processing (NLP)
-            and machine learning techniques to assign weighted sentiment scores
-            to the entities, topics, themes and categories within a sentence or
-            phrase.
-          </p>
-          <p>
-            Sentiment analysis helps data analysts within large enterprises
-            gauge public opinion, conduct nuanced market research, monitor brand
-            and product reputation, and understand customer experiences. In
-            addition, data analytics companies often integrate third-party
-            sentiment analysis APIs into their own customer experience
-            management, social media monitoring, or workforce analytics
-            platform, in order to deliver useful insights to their own
-            customers.
-          </p>
-          <div className={style.main}>
-          <h2>
-            Basic sentiment analysis of text documents follows a straightforword
-            process:
-          </h2>
-          <ol>
-            <li>
-              Break each text document down into its component parts (sentences,
-              phrases, tokens and parts of speech)
-            </li>
-            <li>Identify each sentiment-bearing phrase and component</li>
-            <li>
-              Assign a sentiment score to each phrase and component (-1 to +1)
-            </li>
-            <li>
-              Optional: Combine scores for multi-layered sentiment analysis
-            </li>
-          </ol>
-          </div>
-        </div>
-        <Image src='/img2.jpg' alt="image" height={700} width={800} />
-      </div>
+      <h1 className={style.title}>
+        What is <span>Sentiment Analysis</span> ?
+      </h1>
+      <p className={style.description}>
+        Sentiment analysis (also known as opinion mining or emotion AI) refers
+        to the use of natural language processing, text analysis, computational
+        linguistics, and biometrics to systematically identify, extract,
+        quantify, and study affective states and subjective information.
+        Sentiment analysis is widely applied to voice of the customer materials
+        such as reviews and survey responses, online and social media, and
+        healthcare materials for applications that range from marketing to
+        customer service to clinical medicine.
+      </p>
+      <br />
+      <Info />
+      <hr/>
+      <div className={style.hero}>
+        <a href="https://towardsdatascience.com/sentiment-analysis-concept-analysis-and-applications-6c94d6f58c17">Click here for more from towardsdatascience.com</a>
+      <a href="https://en.wikipedia.org/wiki/Sentiment_analysis">Click here for more about Sentiment from wikipedia</a>
+    </div>
     </div>
   );
 };
