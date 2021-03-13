@@ -25,7 +25,7 @@ header{
   box-sizing: border-box;
 }
 ::placeholder {
-  color: #220a0a;
+  color: #ddd;
   font-size: 1.2em;
 }
 textarea {
