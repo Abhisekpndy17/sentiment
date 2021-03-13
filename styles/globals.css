@@ -35,15 +35,16 @@ textarea {
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
+  color: #fff;
   border-radius: 10px;
   outline: none;
-  background-color: #444;
+  background-color: #888;
   font-size: 1em;
   resize: none;
 }
 .nav-menu {
   background-color: #111;
-  width: 20rem;
+  width: 15rem;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -51,15 +52,11 @@ textarea {
   position: fixed;
   top: 0;
   right: -100%;
-  clip-path: circle(100px at 90% -10%);
-  -webkit-clip-path: circle(100px at 90% -10%);
   transition: .5s;
 }
 
 .nav-menu.active {
   right: 0;
-  clip-path: circle(1000px at 90% -10%);
-  -webkit-clip-path: circle(1000px at 90% -10%);
   transition: 1s;
 }
 
